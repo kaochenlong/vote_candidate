@@ -1,0 +1,15 @@
+<% if candidate.errors.any? %>
+  <ul>
+  <% candidate.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for candidate do |f| %>
+  姓名：<%= f.text_field :name %><br />
+  年齡：<%= f.text_field :age %><br />
+  性別：<%= f.text_field :gender %><br />
+  政見：<%= f.text_area :politics %><br />
+  <%= f.submit %>
+<% end %>
