@@ -2,10 +2,16 @@ class CandidatesController < ApplicationController
   before_action :find_candidate, only: [:show,
                                         :edit,
                                         :update,
-                                        :destroy]
+                                        :destroy,
+                                        :vote]
 
   def index
     @candidates = Candidate.order(id: :desc)
+  end
+
+  def vote
+    @candidate.vote_logs.create(ip_address: request.remote_ip)
+    redirect_to candidates_path, notice: "投票成功!"
   end
 
   def show

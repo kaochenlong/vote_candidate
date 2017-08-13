@@ -5,6 +5,10 @@
 <ul>
 <% @candidates.each do |candidate| %>
   <li>
+    (<%= candidate.vote_logs.size %>)
+
+    <%= link_to "投票!", vote_candidate_path(candidate), method: "post", data: {confirm: "確定投票?!"} %>
+
     <%= link_to candidate_name(candidate), candidate %>
 
     <%= gender_style(candidate.gender) %>
